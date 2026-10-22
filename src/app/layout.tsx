@@ -7,6 +7,8 @@ import { Logo } from "@/components/Logo";
 import { Container } from "@/components/Container";
 import { site } from "@/lib/site";
 import "./globals.css";
+import "./motion.css";
+import "@/components/WorkflowDiagram.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",

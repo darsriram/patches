@@ -4,13 +4,14 @@ import { useEffect, useId, useRef, useState } from "react";
 import { useCases } from "@/lib/use-cases";
 import { LogoMark } from "@/components/Logo";
 
-const descriptions = ["Organize your session into two carts", "Remove distractions", "Build a follow-up list"];
-const urls = ["Amazon · shopping concept", "YouTube · focus concept", "Gmail · follow-up concept"];
+const descriptions = ["Organize your session into two carts", "Organize movies into watch-later collections", "Build a follow-up list", "Remove distractions"];
+const urls = ["Amazon · shopping concept", "Netflix · collections concept", "Gmail · follow-up concept", "YouTube · focus concept"];
 type Stage = "before" | "applying" | "after";
 
 export function PatchPlayground() {
   const [active, setActive] = useState(0);
   const [cart, setCart] = useState<Record<number, 1 | 2>>({});
+  const [collections, setCollections] = useState<Record<number, string>>({});
   const [followUps, setFollowUps] = useState<number[]>([]);
   const [stage, setStage] = useState<Stage>("before");
   const id = useId();
@@ -49,8 +50,9 @@ export function PatchPlayground() {
         <div className="patch-lab-browser"><span aria-hidden="true">● ● ●</span><span>{urls[active]}</span><strong>{patched ? "Patched view" : "Original view"}</strong></div>
         <div className={`patch-lab-scene scene-${active} ${patched ? "is-patched" : ""}`} aria-busy={stage === "applying"}>
           {active === 0 && <ShoppingScene patched={patched} carts={cart} setCarts={setCart} />}
-          {active === 1 && <VideoScene patched={patched} />}
+          {active === 1 && <MovieScene patched={patched} collections={collections} setCollections={setCollections} />}
           {active === 2 && <MailScene patched={patched} saved={followUps} setSaved={setFollowUps} />}
+          {active === 3 && <VideoScene patched={patched} />}
         </div>
         <div className="patch-lab-command"><div className="patch-lab-command-title"><LogoMark className="h-6 w-6" /><strong>Patches</strong><span aria-live="polite">{stage === "applying" ? "Applying preview…" : patched ? "Preview patch applied" : "Try this request"}</span></div><p>“{useCases[active][1]}”</p><div className="patch-lab-command-bottom"><span>Interactive illustration · not your live browser</span><button type="button" onClick={apply} disabled={stage === "applying"}>{stage === "applying" ? "Applying…" : patched ? "Reset preview ↺" : "Apply preview patch →"}</button></div></div>
       </div>
@@ -74,6 +76,11 @@ function ShoppingScene({ patched, carts, setCarts }: { patched: boolean; carts: 
   })}</aside>}</div><span className="scene-result">{patched ? "Sort products into Cart 1 or Cart 2. Moving a product updates both totals for this session." : "A shopping page before adding your own session-based cart organization."}</span></>;
 }
 
+const movies = ["The Last Light", "A Sunday Somewhere", "Small Wonders"];
+const collectionNames = ["Weekend", "With friends", "Quick watches"];
+function MovieScene({ patched, collections, setCollections }: { patched: boolean; collections: Record<number, string>; setCollections: (value: Record<number, string>) => void }) {
+ return <><div className="scene-site-title">Netflix <span>WATCH-LATER COLLECTIONS CONCEPT</span></div><div className={`shopping-concept ${patched ? "with-cart" : ""}`}><div className="sample-products">{movies.map((movie, index) => <article key={movie}><div aria-hidden="true">{["◐", "✳", "◈"][index]}</div><strong>{movie}</strong><span>Sample movie</span>{patched && <select aria-label={`Collection for ${movie}`} value={collections[index] ?? ""} onChange={event => setCollections({ ...collections, [index]: event.target.value })} style={{ width: "100%", padding: 6, border: "1px solid #e5cbbd", borderRadius: 6, fontSize: 10, background: "#fff8f3" }}><option value="">Save to collection</option>{collectionNames.map(name => <option key={name}>{name}</option>)}</select>}</article>)}</div>{patched && <aside className="shopping-later" aria-live="polite"><span className="scene-kicker">MY WATCH-LATER COLLECTIONS</span>{collectionNames.map(name => <section key={name} style={{ marginTop: 16 }}><strong style={{ fontSize: 12 }}>{name}</strong>{movies.filter((_, index) => collections[index] === name).map(movie => <p key={movie} style={{ fontSize: 11, marginTop: 8 }}>{movie}</p>)}{!Object.values(collections).includes(name) && <p style={{ fontSize: 10, marginTop: 8 }}>No movies yet.</p>}</section>)}</aside>}</div><span className="scene-result">{patched ? "Choose a collection for each movie. Move it between sections whenever your plans change." : "One browsing view. Your own watch-later sections have not been added yet."}</span></>;
+}
 function VideoScene({ patched }: { patched: boolean }) {
  return <><div className="scene-site-title">YouTube <span>FOCUS LAYOUT CONCEPT</span></div><div className="video-search">Search videos <span aria-hidden="true">⌕</span></div><div className="video-concept"><nav aria-label="Illustrated subscriptions"><strong>Subscriptions</strong><span>Design Journal</span><span>Science Studio</span><span>Everyday Ideas</span></nav><div className="video-main"><div className="sample-video"><span aria-hidden="true">▷</span><strong>Ideas worth a closer look</strong></div>{!patched && <div className="video-comments">Comments <p>Join the conversation…</p></div>}</div>{!patched && <aside className="video-distractions"><strong>Recommended</strong><div /><div /><strong>Shorts</strong><div /></aside>}</div><span className="scene-result">{patched ? "Video, search, and subscriptions stay. Recommendations, Shorts, and comments are hidden. Saved-layout concept." : "Recommendations, Shorts, and comments surround the video."}</span></>;
 }

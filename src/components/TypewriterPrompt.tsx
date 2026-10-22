@@ -17,7 +17,7 @@ export function TypewriterPrompt() {
   const [index, setIndex] = useState(0);
   const [count, setCount] = useState(0);
   const [deleting, setDeleting] = useState(false);
-  const [paused, setPaused] = useState(false);
+  const [interactionPaused, setInteractionPaused] = useState(false);
   const [visible, setVisible] = useState(false);
   const [pageVisible, setPageVisible] = useState(true);
   const reduced = useSyncExternalStore(subscribeReducedMotion, reducedSnapshot, serverSnapshot);
@@ -34,30 +34,25 @@ export function TypewriterPrompt() {
   }, []);
 
   useEffect(() => {
-    if (!visible || !pageVisible || reduced || paused) return;
-    const delay = deleting ? 25 : count >= phrase.length ? 1900 : 48;
+    if (!visible || !pageVisible || reduced || interactionPaused) return;
+    const delay = deleting ? 35 : count >= phrase.length ? 2600 : 42;
     const timer = setTimeout(() => {
       if (deleting) {
-        if (count > 0) setCount(Math.max(0, count - 4));
+        if (count > 0) setCount(Math.max(0, count - 3));
         else { setIndex((index + 1) % useCases.length); setDeleting(false); }
-      } else if (count < phrase.length) setCount(Math.min(phrase.length, count + 2));
+      } else if (count < phrase.length) setCount(Math.min(phrase.length, count + 1));
       else setDeleting(true);
     }, delay);
     return () => clearTimeout(timer);
-  }, [visible, pageVisible, reduced, paused, count, deleting, index, phrase]);
-
-  function togglePause() {
-    if (!paused) { setCount(phrase.length); setDeleting(false); }
-    setPaused(!paused);
-  }
+  }, [visible, pageVisible, reduced, interactionPaused, count, deleting, index, phrase]);
 
   return (
-    <div ref={ref} className="closing-typewriter" data-no-page-motion>
+    <div ref={ref} className="closing-typewriter" data-no-page-motion onMouseEnter={() => setInteractionPaused(true)} onMouseLeave={() => setInteractionPaused(false)} onFocusCapture={() => setInteractionPaused(true)} onBlurCapture={event => { if (!event.currentTarget.contains(event.relatedTarget)) setInteractionPaused(false); }}>
       <div className="closing-prompt-bar">
-        <div className="closing-prompt-text"><span className="sr-only">Example patch request: {phrase}</span><span aria-hidden="true">{reduced || paused ? phrase : phrase.slice(0, count)}<span className={`closing-caret ${paused ? "is-paused" : ""}`} /></span></div>
+        <div className="closing-prompt-text"><span className="sr-only">Example patch request: {phrase}</span><span aria-hidden="true">{reduced ? phrase : phrase.slice(0, count)}<span className={`closing-caret ${interactionPaused ? "is-paused" : ""}`} /></span></div>
         <ButtonLink href="/beta" className="closing-prompt-arrow"><span aria-hidden="true">↑</span><span className="sr-only">Apply for the Patches beta</span></ButtonLink>
       </div>
-      <div className="closing-prompt-meta"><span>YOUR WORDS. YOUR PATCH.</span>{!reduced && <button type="button" onClick={togglePause} aria-pressed={paused}>{paused ? "Resume animation" : "Pause animation"}</button>}</div>
+      <div className="closing-prompt-meta"><span>YOUR WORDS. YOUR PATCH.</span></div>
     </div>
   );
 }

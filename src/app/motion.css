@@ -1,0 +1,32 @@
+/* One rhythm for entrances, section transitions, and product interactions. */
+.page-reading-progress { position:fixed; z-index:80; top:0; left:0; width:100%; height:2px; background:#ff7043; transform:scaleX(0); transform-origin:left; pointer-events:none; }
+.patches-landing .home-how { padding:100px 0 55px; background:linear-gradient(180deg,#fff 0%,#fff9f4 28%,#faf4ee 100%); border-top:1px solid #efe3da; border-bottom:0; }
+.patches-landing .home-examples { position:relative; background:linear-gradient(180deg,#faf4ee 0%,#fff 180px); padding-top:90px; }
+.patches-landing .home-direction { position:relative; overflow:hidden; padding-block:80px; background:linear-gradient(115deg,#fff3e9,#ffede1); border-block:1px solid #f1dbcc; }
+.patches-landing .home-direction::after { content:""; position:absolute; right:-40px; bottom:-130px; width:340px; height:340px; border-radius:50%; border:1px solid #e6b79955; box-shadow:0 0 0 45px #f5d8c322,0 0 0 90px #f5d8c318; pointer-events:none; }
+.patches-landing .home-direction > div { position:relative; z-index:1; }
+.patches-landing .patches-video-frame { position:relative; isolation:isolate; }
+.patches-landing .patches-video-frame::after { content:""; position:absolute; z-index:-1; inset:-25px; border-radius:inherit; background:radial-gradient(ellipse,#ffcfae55,transparent 70%); filter:blur(15px); pointer-events:none; }
+.patches-landing .patch-lab-panel { transition:box-shadow .6s cubic-bezier(.22,1,.36,1),border-color .6s; }
+.patches-landing .patch-lab-panel:hover { box-shadow:0 20px 60px -35px #c86f4533; }
+.patches-landing .patch-lab-tabs button { transition:background-color .35s,border-color .35s,transform .45s cubic-bezier(.22,1,.36,1); }
+.patches-landing .patch-lab-tabs button:hover { transform:translateX(3px); }
+.patches-landing .personal-layouts > div { transition:transform .8s cubic-bezier(.22,1,.36,1),box-shadow .8s; }
+.patches-landing .overview-story:hover .personal-layouts > div:first-child { transform:rotate(-3deg) translateY(3px); }
+.patches-landing .overview-story:hover .personal-layouts > div:last-child { transform:rotate(3deg) translateY(-3px); box-shadow:0 8px 22px -15px #b77b4c66; }
+.patches-landing h2 { text-wrap:balance; }
+@media(max-width:899px) { .patches-landing .home-how { padding:70px 0 35px; }.patches-landing .home-examples { padding-top:55px; }.patches-landing .home-direction { padding-block:60px; } }
+@media(prefers-reduced-motion:reduce) { .page-reading-progress { display:none; }.patches-landing .patch-lab-tabs button:hover,.patches-landing .overview-story:hover .personal-layouts > div { transform:none; } }
+
+.use-case-videos { margin-top:36px; }
+.use-case-video-tabs { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:12px; margin-bottom:24px; }
+.use-case-video-tabs button { text-align:left; border:1px solid #eadfd7; background:#fff; padding:18px; border-radius:14px; cursor:pointer; transition:background .25s,border-color .25s; }
+.use-case-video-tabs button:hover { background:#fff8f3; }
+.use-case-video-tabs button[aria-selected="true"] { background:#fff0e6; border-color:#ffb597; }
+.use-case-video-tabs button > span { display:block; font-size:10px; letter-spacing:.08em; color:#a8492b; margin-bottom:12px; }
+.use-case-video-tabs strong { display:block; font-size:18px; color:#292d29; font-weight:500; }
+.use-case-video-tabs small { display:block; color:#756961; font-size:12px; line-height:1.5; margin-top:6px; }
+.use-case-video-panel { overflow:hidden; border-radius:20px; border:1px solid #eadfd7; box-shadow:0 16px 65px -30px #ffc5a3; background:#fff; }
+.use-case-video-panel video { display:block; width:100%; aspect-ratio:16/9; background:#fff; }
+.use-case-video-caption { margin-top:18px; text-align:center; font-size:11px; line-height:1.6; color:#756961; }
+@media(max-width:600px) { .use-case-video-tabs { grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; margin-bottom:16px; }.use-case-video-tabs button { padding:13px; }.use-case-video-tabs button > span { margin-bottom:6px; }.use-case-video-tabs strong { font-size:16px; }.use-case-video-tabs small { font-size:11px; }.use-case-video-panel { border-radius:12px; } }
