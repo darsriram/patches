@@ -5,6 +5,7 @@ type Interest = "beta";
 
 type Payload = {
   firstName?: unknown;
+  lastName?: unknown;
   email?: unknown;
   school?: unknown;
   interest?: unknown;
@@ -37,6 +38,7 @@ export async function POST(request: Request) {
     : null;
   const email = isNonEmptyString(body.email) ? body.email.trim().toLowerCase() : null;
   const interest = body.interest === "beta" ? "beta" : null;
+  const lastName = optionalString(body.lastName);
   const school = optionalString(body.school);
   const websites = optionalString(body.websites);
   const changes = optionalString(body.changes);
@@ -45,9 +47,9 @@ export async function POST(request: Request) {
       ? body.feedbackSession
       : undefined;
 
-  if (!firstName || !email || !interest) {
+  if (!firstName || !lastName || !email || !interest) {
     return Response.json(
-      { error: "First name, email, and interest are required." },
+      { error: "First name, last name, email, and interest are required." },
       { status: 400 },
     );
   }
@@ -65,6 +67,7 @@ export async function POST(request: Request) {
 
   const record = {
     firstName,
+    lastName: lastName ?? null,
     email,
     school: school ?? null,
     interest: interest as Interest,

@@ -37,6 +37,6 @@ export function HomeFAQ() { return (
                 },
               ]}
             />
-        <div className="technical-accordion"><Accordion items={[{ title: "The technical version", content: "Patches currently focuses on CSS-based presentation changes: hiding sections, adjusting spacing, highlighting existing information, and restructuring supported layouts. It changes the view in your browser, not the website’s underlying content." }]} /></div>
+        <div className="technical-accordion"><Accordion items={[{ title: "The technical version", content: "Patches can change a supported page’s styling, layout, and underlying page content in your browser. That includes hiding sections, adjusting spacing, highlighting information, restructuring layouts, and adding or changing page elements and content. These changes apply to your browser’s version of the page; they don’t modify the website’s server or source files." }]} /></div>
       </div></Container></section>
 ); }

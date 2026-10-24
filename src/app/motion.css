@@ -30,3 +30,6 @@
 .use-case-video-panel video { display:block; width:100%; aspect-ratio:16/9; background:#fff; }
 .use-case-video-caption { margin-top:18px; text-align:center; font-size:11px; line-height:1.6; color:#756961; }
 @media(max-width:600px) { .use-case-video-tabs { grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; margin-bottom:16px; }.use-case-video-tabs button { padding:13px; }.use-case-video-tabs button > span { margin-bottom:6px; }.use-case-video-tabs strong { font-size:16px; }.use-case-video-tabs small { font-size:11px; }.use-case-video-panel { border-radius:12px; } }
+
+.patch-symbol-field { opacity:1; mask-image:linear-gradient(to bottom,transparent,#000 12%,#000 85%,transparent); }
+.patches-hero-copy { position:relative; }

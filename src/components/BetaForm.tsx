@@ -8,13 +8,14 @@ type Interest = "beta";
 type Feedback = "yes" | "no" | "";
 
 type FieldErrors = Partial<
-  Record<"firstName" | "email" | "interest" | "feedbackSession", string>
+  Record<"firstName" | "lastName" | "email" | "interest" | "feedbackSession", string>
 >;
 
 type SubmitMode = "production" | "local-dev";
 
 export function BetaForm() {
   const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [school, setSchool] = useState("");
   const interest: Interest = "beta";
@@ -39,6 +40,7 @@ export function BetaForm() {
     () => () => {
       const next: FieldErrors = {};
       if (!firstName.trim()) next.firstName = "Enter your first name.";
+      if (!lastName.trim()) next.lastName = "Enter your last name.";
       if (!email.trim()) next.email = "Enter your email.";
       else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) {
         next.email = "Enter a valid email address.";
@@ -48,7 +50,7 @@ export function BetaForm() {
       }
       return next;
     },
-    [email, feedbackSession, firstName, interest],
+    [email, feedbackSession, firstName, lastName, interest],
   );
 
   async function onSubmit(event: React.FormEvent<HTMLFormElement>) {
@@ -67,6 +69,7 @@ export function BetaForm() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           firstName: firstName.trim(),
+          lastName: lastName.trim(),
           email: email.trim(),
           school: school.trim() || undefined,
           interest,
@@ -149,6 +152,10 @@ export function BetaForm() {
             aria-invalid={Boolean(errors.firstName)}
             aria-describedby={errors.firstName ? "firstName-error" : undefined}
           />
+        </Field>
+
+        <Field id="lastName" label="Last name" required error={errors.lastName}>
+          <input id="lastName" name="lastName" autoComplete="family-name" required aria-invalid={Boolean(errors.lastName)} aria-describedby={errors.lastName ? "lastName-error" : undefined} value={lastName} onChange={event => setLastName(event.target.value)} className={fieldClass} maxLength={100} />
         </Field>
 
         <Field id="email" label="Email" required error={errors.email}>

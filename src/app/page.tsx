@@ -1,5 +1,4 @@
 import { BetaCTA } from "@/components/BetaCTA";
-import { UseCaseVideos } from "@/components/UseCaseVideos";
 import { HomeFAQ } from "@/components/HomeFAQ";
 import { DemoVideo } from "@/components/DemoVideo";
 import { ScrollReveal } from "@/components/ScrollReveal";
@@ -7,13 +6,13 @@ import { ButtonLink } from "@/components/Button";
 import { Container } from "@/components/Container";
 import { WorkflowDiagram } from "@/components/WorkflowDiagram";
 import { SidebarPreview } from "@/components/SidebarPreview";
-import { InteractiveBackground } from "@/components/InteractiveBackground";
+import { PatchField } from "@/components/PatchField";
 
 export default function Home() {
   return (
     <div className="patches-landing">
       <section className="patches-hero">
-        <InteractiveBackground />
+        <PatchField />
         <Container className="patches-heroContent patches-product-hero">
           <div className="patches-hero-copy" data-motion-group>
           <p className="patches-eyebrow">Your web. Your way.</p>
@@ -48,7 +47,6 @@ export default function Home() {
         </Container>
       </section>
       <section id="how-it-works" className="home-how home-anchor" aria-labelledby="workflow-title"><Container><WorkflowDiagram /></Container></section>
-      <section id="use-cases" className="inner-section home-examples"><Container><ScrollReveal><p className="patches-eyebrow">For all the ways you use the web</p><h2 className="inner-section-title">Your task comes <em>first.</em></h2><p className="inner-section-copy">See the sidebar in action. A few words, a page that works your way.</p></ScrollReveal><ScrollReveal><UseCaseVideos /></ScrollReveal></Container></section>
       <section className="home-direction"><Container><div data-motion-group><p className="patches-eyebrow">Product direction</p><h2 className="inner-section-title">A more personal web, <em>one patch at a time.</em></h2></div><div className="home-direction-details" data-motion-group><article><span>Current focus</span><p>CSS-based interface changes and saved website-specific preferences on supported pages.</p></article><article><span>Planned</span><p>Broader personalization and community-created patches.</p></article></div></Container></section>
       <HomeFAQ />
       <BetaCTA typewriter />
