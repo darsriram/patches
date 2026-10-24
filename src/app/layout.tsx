@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     template: `%s · ${site.name}`,
   },
   description: site.description,
-  icons: { icon: "/patches-mark.png", apple: "/patches-mark.png" },
+  icons: { icon: { url: "/patches-favicon-orange.svg", type: "image/svg+xml" }, apple: "/patches-icon-orange.png" },
 };
 
 function HeaderFallback() {
