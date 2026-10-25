@@ -38,7 +38,11 @@ export default function Home() {
             <h2 id="problem-heading" data-scroll-item>Websites are built for everyone. <em>Yours should work for you.</em></h2>
             <div data-scroll-item>
               <p>The same layout. The same clutter. Millions of different people. Patches lets you reshape websites around what you need.</p>
-              <div className="personal-layouts" aria-hidden="true"><div><i /><span /><span /><b /></div><span>→</span><div><b /><section><span /><span /><span /></section></div></div><p className="personal-layouts-caption">Same page. A layout that fits.</p>
+              <div className="layout-comparison" role="img" aria-label="Before: article squeezed between menus and updates. After: a wide article with references grouped below and navigation in a compact top bar.">
+                <div className="layout-mini layout-mini-before" aria-hidden="true"><span className="layout-mini-label">BEFORE</span><div className="layout-mini-browser"><div className="layout-mini-top">Menu · News · Updates</div><div className="layout-mini-scattered"><aside>Links<i /><i /><i /></aside><article><b>Article</b><i /><i /><i /></article><aside>Updates<i /><i /></aside><section>References scattered below<i /></section></div></div></div>
+                <span className="layout-mini-arrow" aria-hidden="true">→</span>
+                <div className="layout-mini layout-mini-after" aria-hidden="true"><span className="layout-mini-label">YOUR VIEW</span><div className="layout-mini-browser"><div className="layout-mini-top">Reading <span>Navigation ↗</span></div><article><b>Room for the whole idea.</b><i /><i /><i /></article><section><strong>Sources, together</strong><div><span>01 Reference</span><span>02 Reference</span></div></section></div></div>
+              </div><p className="personal-layouts-caption">Same page. A layout that fits.</p>
             </div>
           </ScrollReveal>
           <ScrollReveal stagger className="home-friction-strip">

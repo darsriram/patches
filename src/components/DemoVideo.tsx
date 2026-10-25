@@ -1,10 +1,32 @@
+"use client";
+
+import { useEffect, useRef } from "react";
 import { Container } from "@/components/Container";
 import { ScrollReveal } from "@/components/ScrollReveal";
 
 // Supply a local video URL and caption track when the product recording is ready.
 export function DemoVideo({ src, captionsSrc }: { src?: string; captionsSrc?: string }) {
+  const section = useRef<HTMLElement>(null);
+  useEffect(() => {
+    const element = section.current;
+    if (!element) return;
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let frame = 0;
+    const update = () => {
+      frame = 0;
+      const top = element.getBoundingClientRect().top;
+      const progress = reduced.matches ? 1 : Math.max(0, Math.min(1, (window.innerHeight * .95 - top) / (window.innerHeight * .65)));
+      element.style.setProperty("--video-reveal", String(progress));
+    };
+    const schedule = () => { if (!frame) frame = requestAnimationFrame(update); };
+    window.addEventListener("scroll", schedule, { passive: true });
+    window.addEventListener("resize", schedule);
+    reduced.addEventListener("change", schedule);
+    schedule();
+    return () => { cancelAnimationFrame(frame); window.removeEventListener("scroll", schedule); window.removeEventListener("resize", schedule); reduced.removeEventListener("change", schedule); };
+  }, []);
   return (
-    <section id="demo-video" className="patches-video-section" aria-labelledby="demo-video-title">
+    <section ref={section} data-no-page-motion id="demo-video" className="patches-video-section scroll-video-reveal" aria-labelledby="demo-video-title">
       <Container>
         <ScrollReveal>
           <div className="patches-video-heading">
@@ -13,7 +35,7 @@ export function DemoVideo({ src, captionsSrc }: { src?: string; captionsSrc?: st
             <p>From a few words to a page that feels like yours.</p>
           </div>
         </ScrollReveal>
-        <ScrollReveal variant="zoom" className="patches-video-frame">
+        <div className="patches-video-frame scroll-video-frame">
           {src ? (
             <video className="patches-demo-video" controls playsInline preload="none" aria-label="Patches product demo">
               <source src={src} type="video/mp4" />
@@ -31,7 +53,7 @@ export function DemoVideo({ src, captionsSrc }: { src?: string; captionsSrc?: st
               <div className="patches-video-timeline" aria-hidden="true"><span /><i /><span /></div>
             </div>
           )}
-        </ScrollReveal>
+        </div>
       </Container>
     </section>
   );
