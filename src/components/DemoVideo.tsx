@@ -38,7 +38,11 @@ export function DemoVideo({ src, captionsSrc }: { src?: string; captionsSrc?: st
         </ScrollReveal>
         <div className="patches-video-frame scroll-video-frame" data-playing={started}>
           {src ? (
-            <video className="patches-demo-video" controls playsInline preload="metadata" onPlay={() => setStarted(true)} poster="/videos/patches-product-demo-full-frame-poster.jpg" aria-label="Patches Canvas and Gmail product demonstration">
+            <video className="patches-demo-video" controls muted playsInline preload="metadata"
+              onPointerEnter={event => {
+                if (event.pointerType !== "mouse" || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+                void event.currentTarget.play().catch(() => { /* Native controls remain available if autoplay is blocked. */ });
+              }} onPlay={() => setStarted(true)} poster="/videos/patches-product-demo-full-frame-poster.jpg" aria-label="Patches Canvas and Gmail product demonstration">
               <source src={src} type="video/mp4" />
               {captionsSrc && <track kind="captions" src={captionsSrc} srcLang="en" label="English" />}
               Your browser does not support embedded video.
