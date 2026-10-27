@@ -144,3 +144,12 @@
  .p-recipe-art { height:65px; }
  .p-demo-recipe article h3 { font-size:20px; }
 }
+
+/* Keep moving reveal transforms off the video during playback for sharp text. */
+.patches-landing .patches-video-frame { max-width:1100px; }
+.patches-landing .scroll-video-frame[data-playing="true"] { transform:none; clip-path:none; opacity:1; }
+
+/* The recording fills the player without a decorative browser bezel. */
+.patches-landing .patches-video-frame { border:0; border-radius:0; box-shadow:none; background:transparent; }
+.patches-landing .patches-video-frame::after { display:none; }
+.patches-landing .scroll-video-frame { clip-path:inset(calc((1 - var(--video-reveal)) * 14%) calc((1 - var(--video-reveal)) * 8%)); }

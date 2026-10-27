@@ -1,12 +1,13 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Container } from "@/components/Container";
 import { ScrollReveal } from "@/components/ScrollReveal";
 
-// Supply a local video URL and caption track when the product recording is ready.
+// Edited screen recordings show the actual Canvas and Gmail workflows.
 export function DemoVideo({ src, captionsSrc }: { src?: string; captionsSrc?: string }) {
   const section = useRef<HTMLElement>(null);
+  const [started, setStarted] = useState(false);
   useEffect(() => {
     const element = section.current;
     if (!element) return;
@@ -35,11 +36,11 @@ export function DemoVideo({ src, captionsSrc }: { src?: string; captionsSrc?: st
             <p>From a few words to a page that feels like yours.</p>
           </div>
         </ScrollReveal>
-        <div className="patches-video-frame scroll-video-frame">
+        <div className="patches-video-frame scroll-video-frame" data-playing={started}>
           {src ? (
-            <video className="patches-demo-video" controls playsInline preload="none" aria-label="Patches product demo">
+            <video className="patches-demo-video" controls playsInline preload="metadata" onPlay={() => setStarted(true)} poster="/videos/patches-product-demo-full-frame-poster.jpg" aria-label="Patches Canvas and Gmail product demonstration">
               <source src={src} type="video/mp4" />
-              {captionsSrc && <track kind="captions" src={captionsSrc} srcLang="en" label="English" default />}
+              {captionsSrc && <track kind="captions" src={captionsSrc} srcLang="en" label="English" />}
               Your browser does not support embedded video.
             </video>
           ) : (

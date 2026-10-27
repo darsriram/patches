@@ -29,7 +29,7 @@ export default function Home() {
         </Container>
       </section>
 
-      <DemoVideo />
+      <DemoVideo src="/videos/patches-product-demo-full-frame.mp4" captionsSrc="/videos/patches-product-demo-22s.vtt" />
 
       <section id="problem" className="patches-overview home-anchor" aria-labelledby="problem-heading">
         <Container>
