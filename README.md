@@ -1,6 +1,6 @@
-# Patches
+# Patchy
 
-Marketing site for **Patches**, an early-stage browser extension that lets people customize website interfaces in plain English. The site recruits early beta testers and collects beta applications.
+Marketing site for **Patchy**, an early-stage browser extension that lets people customize website interfaces in plain English. The site recruits early beta testers and collects beta applications.
 
 ## Local development
 
@@ -19,7 +19,7 @@ npm run build
 ## Routes
 
 - `/` — landing page
-- `/problem` — the problem Patches addresses
+- `/problem` — the problem Patchy addresses
 - `/how-it-works` — product explanation
 - `/about` — mission and product direction
 - `/beta` — beta application; `/waitlist` redirects here
@@ -76,14 +76,20 @@ Next.js, TypeScript, Tailwind CSS.
 
 ## Make + Brevo delivery
 
-The Make scenario **Patches — Beta applications** receives the webhook, creates or updates the Brevo contact in **Patches Beta** (list 4), then responds with the storage acknowledgement. Application answers are mapped to `FIRSTNAME`, `BETA_SCHOOL`, `BETA_WEBSITES`, `BETA_CHANGES`, `BETA_FEEDBACK`, and `BETA_SUBMITTED_AT`. Existing email addresses are updated.
+The Make scenario **Patchy — Beta applications** receives the webhook, creates or updates the Brevo contact in **Patchy Beta** (list 4), then responds with the storage acknowledgement. Application answers are mapped to `FIRSTNAME`, `BETA_SCHOOL`, `BETA_WEBSITES`, `BETA_CHANGES`, `BETA_FEEDBACK`, and `BETA_SUBMITTED_AT`. Existing email addresses are updated.
 
-Brevo automation **Patches — Beta application confirmation** sends an application receipt after one minute. Re-entry is disabled. Sender and reply-to: `patches.browser@gmail.com`. The receipt does not grant beta access.
+Brevo automation **Patchy — Beta application confirmation** sends an application receipt after one minute. Re-entry is disabled. Sender and reply-to: `patches.browser@gmail.com`. The receipt does not grant beta access.
 
 For deployment, copy the server-only `BETA_WEBHOOK_URL` into the hosting provider environment and redeploy. Local environment files are ignored by Git. Manage the dedicated Brevo key in Make; it expires after one year or 90 days of inactivity according to Brevo.
 
 ## Google Sheets application log
 
-Make also appends each submitted application to the `Applications` tab in [Patches Beta Applications](https://docs.google.com/spreadsheets/d/1Zuops3WUYCpEMkHOveetmMl-5fW8QGjoAC_ltufxePc/edit). Columns contain submitted-at UTC, first name, email, school or organization, websites, requested changes, and feedback session preference. The sheet logs each submission, including repeat applications. Brevo continues to update existing contacts by email and sends only one application receipt.
+Make also appends each submitted application to the `Applications` tab in [Patchy Beta Applications](https://docs.google.com/spreadsheets/d/1Zuops3WUYCpEMkHOveetmMl-5fW8QGjoAC_ltufxePc/edit). Columns contain submitted-at UTC, first name, email, school or organization, websites, requested changes, and feedback session preference. The sheet logs each submission, including repeat applications. Brevo continues to update existing contacts by email and sends only one application receipt.
 
 The Google Sheets module runs after the successful Brevo storage response, so email delivery remains independent of spreadsheet logging. Check Make execution history for spreadsheet delivery errors. The dedicated Google connection is managed in Make.
+
+## Patchy rebrand
+
+The public product name is Patchy. The existing domain (`trypatches.me`), sender address (`patches.browser@gmail.com`), repository, webhook URL, Google Form URL, spreadsheet ID, and Brevo list IDs are retained intentionally. Add approved applicants to **Patchy — Approved beta testers** (list 7); list 4 remains the application intake list. Both Brevo automations retain their original triggers and one-time entry settings.
+
+The landing page uses `/videos/patchy-product-demo.mp4`, with updated recorded sidebar labels and a Patchy closing lockup. Original recordings and prior renders are retained as source material. Reproduce the rebrand with `exports/logos/export.cjs` and `scripts/rebrand-patchy-demo.py`. Downloadable logo variants are in `exports/logos/patchy-logos.zip`.

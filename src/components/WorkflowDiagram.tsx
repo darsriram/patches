@@ -57,7 +57,7 @@ function SaveReceipt({ saved }: { saved: boolean }) {
 
 const steps = [
   { label: "Describe", title: "Start with what you need.", copy: "Keep the references beside the article. A few words in the sidebar are all it takes to describe your ideal view.", detail: "YOUR WORDS → YOUR INTENT" },
-  { label: "Shape", title: "Your sentence becomes a layout.", copy: "The Patches sidebar opens beside your page. Describe the layout you want and send your request, without leaving the website.", detail: "YOUR INTENT → A PATCH" },
+  { label: "Shape", title: "Your sentence becomes a layout.", copy: "The Patchy sidebar opens beside your page. Describe the layout you want and send your request, without leaving the website.", detail: "YOUR INTENT → A PATCH" },
   { label: "Review", title: "See the difference, in context.", copy: "The article and its references sit side by side. Review the change on the same page, with your information still there.", detail: "A PATCH → YOUR VIEW" },
   { label: "Keep", title: "A little more you, next time.", copy: "Save your website-specific preference so your setup is ready when you return to a supported page.", detail: "YOUR VIEW → A SAVED PREFERENCE" },
 ];
@@ -138,19 +138,19 @@ export function WorkflowDiagram({ title = <>A better interface starts with <em>a
                   <article className={styles.article}><span className={styles.kicker}>THE READING ROOM</span><h3>Good ideas deserve<br />a little more room.</h3><p>A space to follow a thought.<br />And the sources behind it.</p><div className={styles.articleImage}><span>Ideas, in context.</span><i /><i /><i /></div><div className={styles.lines}><i /><i /><i /></div></article>
                   <aside className={styles.references}><span className={styles.kicker}>REFERENCES</span>{["The shape of an idea", "Reading, connected", "A different perspective"].map((text,index) => <div key={text}><span>0{index+1}</span><strong>{text}</strong><i /></div>)}</aside>
                 </div>
-                <aside className="process-extensionPanel"><div className="process-extensionTitle"><LogoMark className="h-4 w-4" /><strong>Patches</strong><span>×</span></div><div className="process-extensionInner"><div className="process-extensionSite"><LogoMark className="h-5 w-5" /><div><strong>Patches</strong><span>reading.space</span></div><i>● Connected</i></div><div className="process-extensionInput"><p>Keep the references beside the article.</p><b>→</b></div><div className="process-extensionChips"><span>hide sidebar</span><span>larger text</span></div><div className="process-extensionSaved"><span>SAVED PATCHES</span><span>Reset site</span></div><div className="process-extensionEmpty"><span>↗</span><p>Your next little improvement<br />starts with a sentence.</p></div><div className="process-extensionToggle"><span>Patches on this page</span><i /></div></div></aside>
+                <aside className="process-extensionPanel"><div className="process-extensionTitle"><LogoMark className="h-4 w-4" /><strong>Patchy</strong><span>×</span></div><div className="process-extensionInner"><div className="process-extensionSite"><LogoMark className="h-5 w-5" /><div><strong>Patchy</strong><span>reading.space</span></div><i>● Connected</i></div><div className="process-extensionInput"><p>Keep the references beside the article.</p><b>→</b></div><div className="process-extensionChips"><span>hide sidebar</span><span>larger text</span></div><div className="process-extensionSaved"><span>SAVED CHANGES</span><span>Reset site</span></div><div className="process-extensionEmpty"><span>↗</span><p>Your next little improvement<br />starts with a sentence.</p></div><div className="process-extensionToggle"><span>Changes on this page</span><i /></div></div></aside>
                 <div className={styles.browserFoot}><span>Same page. Same information.</span><span>{active > 1 && (active !== 3 || saved) ? "Your layout ✓" : "Original layout"}</span></div>
               </div>
-              <div className={styles.command}><div><LogoMark className="h-5 w-5" /><strong>Patches</strong><span>{active === 0 ? "Your request" : active === 1 ? "Shaping the layout" : "Patch ready"}</span></div><p>Keep the references <mark>beside the article.</mark></p><div className={styles.commandFoot}><span>{active < 2 ? "A few words. A new perspective." : "Article + references, side by side"}</span><b>{active < 2 ? "↑" : "✓"}</b></div></div>
+              <div className={styles.command}><div><LogoMark className="h-5 w-5" /><strong>Patchy</strong><span>{active === 0 ? "Your request" : active === 1 ? "Shaping the layout" : "Patch ready"}</span></div><p>Keep the references <mark>beside the article.</mark></p><div className={styles.commandFoot}><span>{active < 2 ? "A few words. A new perspective." : "Article + references, side by side"}</span><b>{active < 2 ? "↑" : "✓"}</b></div></div>
               {active === 3 && <SaveReceipt key={saved ? "enabled" : "disabled"} saved={saved} />}
             </div>
-            <div className={styles.sceneBottom}><div className={styles.progress}>{steps.map((step,index) => <span key={step.label} data-complete={index <= active} />)}</div><span>{active === 0 ? "01 — A sentence" : active === 1 ? "02 — The Patches sidebar" : active === 2 ? "03 — A different view" : "04 — Your preference"}</span>{active === 3 && <button type="button" onClick={() => setSaved(!saved)} aria-pressed={saved}>{saved ? "Turn off" : "Restore"} <span aria-hidden="true">↺</span></button>}</div>
+            <div className={styles.sceneBottom}><div className={styles.progress}>{steps.map((step,index) => <span key={step.label} data-complete={index <= active} />)}</div><span>{active === 0 ? "01 — A sentence" : active === 1 ? "02 — The Patchy sidebar" : active === 2 ? "03 — A different view" : "04 — Your preference"}</span>{active === 3 && <button type="button" onClick={() => setSaved(!saved)} aria-pressed={saved}>{saved ? "Turn off" : "Restore"} <span aria-hidden="true">↺</span></button>}</div>
           </div>
           <figcaption>Animated product concept · supported pages only</figcaption>
         </figure>
         <div className={styles.mobileCopy} aria-live="polite"><h3>{steps[active].title}</h3><p>{steps[active].copy}</p></div>
       </div>
-      <p className={styles.note}><span aria-hidden="true">↳</span> You describe the change. Patches changes the presentation.</p>
+      <p className={styles.note}><span aria-hidden="true">↳</span> You describe the change. Patchy changes the presentation.</p>
     </div>
   );
 }

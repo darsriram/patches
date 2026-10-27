@@ -50,7 +50,7 @@ export function TypewriterPrompt() {
     <div ref={ref} className="closing-typewriter" data-no-page-motion onMouseEnter={() => setInteractionPaused(true)} onMouseLeave={() => setInteractionPaused(false)} onFocusCapture={() => setInteractionPaused(true)} onBlurCapture={event => { if (!event.currentTarget.contains(event.relatedTarget)) setInteractionPaused(false); }}>
       <div className="closing-prompt-bar">
         <div className="closing-prompt-text"><span className="sr-only">Example patch request: {phrase}</span><span aria-hidden="true">{reduced ? phrase : phrase.slice(0, count)}<span className={`closing-caret ${interactionPaused ? "is-paused" : ""}`} /></span></div>
-        <ButtonLink href="/beta" className="closing-prompt-arrow"><span aria-hidden="true">↑</span><span className="sr-only">Apply for the Patches beta</span></ButtonLink>
+        <ButtonLink href="/beta" className="closing-prompt-arrow"><span aria-hidden="true">↑</span><span className="sr-only">Apply for the Patchy beta</span></ButtonLink>
       </div>
       <div className="closing-prompt-meta"><span>YOUR WORDS. YOUR PATCH.</span></div>
     </div>

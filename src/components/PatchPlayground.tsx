@@ -54,9 +54,9 @@ export function PatchPlayground() {
           {active === 2 && <MailScene patched={patched} saved={followUps} setSaved={setFollowUps} />}
           {active === 3 && <VideoScene patched={patched} />}
         </div>
-        <div className="patch-lab-command"><div className="patch-lab-command-title"><LogoMark className="h-6 w-6" /><strong>Patches</strong><span aria-live="polite">{stage === "applying" ? "Applying preview…" : patched ? "Preview patch applied" : "Try this request"}</span></div><p>“{useCases[active][1]}”</p><div className="patch-lab-command-bottom"><span>Interactive illustration · not your live browser</span><button type="button" onClick={apply} disabled={stage === "applying"}>{stage === "applying" ? "Applying…" : patched ? "Reset preview ↺" : "Apply preview patch →"}</button></div></div>
+        <div className="patch-lab-command"><div className="patch-lab-command-title"><LogoMark className="h-6 w-6" /><strong>Patchy</strong><span aria-live="polite">{stage === "applying" ? "Applying preview…" : patched ? "Preview patch applied" : "Try this request"}</span></div><p>“{useCases[active][1]}”</p><div className="patch-lab-command-bottom"><span>Interactive illustration · not your live browser</span><button type="button" onClick={apply} disabled={stage === "applying"}>{stage === "applying" ? "Applying…" : patched ? "Reset preview ↺" : "Apply preview patch →"}</button></div></div>
       </div>
-      <p className="patch-lab-disclaimer">Interactive concepts with sample content, not live integrations or claims of current availability. Saved items stay in this preview while you switch examples. These websites are not affiliated with Patches.</p>
+      <p className="patch-lab-disclaimer">Interactive concepts with sample content, not live integrations or claims of current availability. Saved items stay in this preview while you switch examples. These websites are not affiliated with Patchy.</p>
     </div>
   );
 }

@@ -23,7 +23,7 @@ export function PromptPanel({
         <div className="flex items-center gap-2">
           <LogoMark className="h-5 w-5" />
           <span className="text-xs font-semibold tracking-tight text-ink">
-            Patches
+            Patchy
           </span>
         </div>
         {status ? (

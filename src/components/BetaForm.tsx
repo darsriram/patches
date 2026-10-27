@@ -269,7 +269,7 @@ export function BetaForm() {
         {submitting ? "Sending…" : buttonLabel}
       </Button>
       <p className="mt-3 text-center text-sm text-muted">
-        We’ll email you about Patches access and beta testing.
+        We’ll email you about Patchy access and beta testing.
       </p>
     </form>
   );

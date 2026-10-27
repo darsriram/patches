@@ -43,9 +43,9 @@ export function SidebarPreview() {
       setEnabled(true); setBusy(false); setMessage("Patch applied and saved in this preview."); timer.current = null;
     }, 650);
   }
-  return <figure className="extension-preview p-demo" data-no-background-drag data-no-page-motion aria-label="Interactive Patches sidebar demo">
+  return <figure className="extension-preview p-demo" data-no-background-drag data-no-page-motion aria-label="Interactive Patchy sidebar demo">
     <div className="p-demo-browser">
-      <div className="p-demo-toolbar"><span aria-hidden="true">● ● ●</span><span>littlekitchen.example / tomato-pasta</span><button ref={launcher} type="button" onClick={() => setOpen(!open)} aria-expanded={open} aria-controls={panelId} aria-label={open ? "Close Patches demo sidebar" : "Open Patches demo sidebar"}><LogoMark className="h-5 w-5" /></button></div>
+      <div className="p-demo-toolbar"><span aria-hidden="true">● ● ●</span><span>littlekitchen.example / tomato-pasta</span><button ref={launcher} type="button" onClick={() => setOpen(!open)} aria-expanded={open} aria-controls={panelId} aria-label={open ? "Close Patchy demo sidebar" : "Open Patchy demo sidebar"}><LogoMark className="h-5 w-5" /></button></div>
       <div className="p-demo-stage" data-open={open}>
         <div className="p-demo-page p-demo-recipe" >
           <header><strong>little kitchen.</strong><span>SIMPLE FOOD, EVERY DAY</span></header>
@@ -74,18 +74,18 @@ export function SidebarPreview() {
           </article>
           <footer>Little Kitchen · Sample recipe</footer>
         </div>
-        <aside id={panelId} className="p-demo-sidebar" aria-label="Patches demo controls" aria-hidden={!open} inert={!open} onKeyDown={event => { if (event.key === "Escape") close(); }}>
-          <div className="p-demo-shell-title"><span><LogoMark className="h-5 w-5" />Patches</span><button type="button" onClick={close} aria-label="Close demo panel">×</button></div>
+        <aside id={panelId} className="p-demo-sidebar" aria-label="Patchy demo controls" aria-hidden={!open} inert={!open} onKeyDown={event => { if (event.key === "Escape") close(); }}>
+          <div className="p-demo-shell-title"><span><LogoMark className="h-5 w-5" />Patchy</span><button type="button" onClick={close} aria-label="Close demo panel">×</button></div>
           <div className="p-demo-inner">
-            <header className="p-demo-site"><LogoMark className="h-6 w-6" /><div><strong>Patches</strong><span>littlekitchen.example</span></div><span className="p-demo-connected"><i />Demo</span></header>
+            <header className="p-demo-site"><LogoMark className="h-6 w-6" /><div><strong>Patchy</strong><span>littlekitchen.example</span></div><span className="p-demo-connected"><i />Demo</span></header>
             <div className="p-demo-form"><div className="p-demo-compose"><div className="p-demo-prompt-display" aria-label="Selected example request">{prompt}</div><span className="p-demo-send-display" aria-hidden="true">{busy ? <span className="p-demo-spinner" /> : "→"}</span></div><p className="p-demo-choose">Click a suggestion to change this page</p><div className="p-demo-chips">{suggestions.map(example => <button key={example.kind} type="button" disabled={busy} aria-pressed={prompt === example.prompt && has(example.kind)} onClick={() => apply(example)}><span aria-hidden="true">↗</span> {example.label}</button>)}</div></div>
-            <div className="p-demo-saved-title"><strong>SAVED PATCHES</strong><button type="button" onClick={reset}>Reset site</button></div>
+            <div className="p-demo-saved-title"><strong>SAVED CHANGES</strong><button type="button" onClick={reset}>Reset site</button></div>
             <p role="status" aria-live="polite" className="p-demo-status">{message}</p>
             <div className="p-demo-saved">{patches.length ? patches.map(patch => <div key={patch.kind}><span>{patch.label}</span><button type="button" role="switch" aria-checked={patch.enabled} aria-label={`${patch.label} patch`} className="p-demo-switch" onClick={() => setPatches(previous => previous.map(item => item.kind === patch.kind ? { ...item, enabled: !item.enabled } : item))}><i /></button></div>) : <p>No patches for this site yet.<br />Choose a suggestion above to create one.</p>}</div>
-            <div className="p-demo-master"><span>Patches on this page</span><button type="button" role="switch" aria-checked={enabled} aria-label="Enable patches on the sample page" className="p-demo-switch" onClick={() => setEnabled(!enabled)}><i /></button></div>
+            <div className="p-demo-master"><span>Changes on this page</span><button type="button" role="switch" aria-checked={enabled} aria-label="Enable patches on the sample page" className="p-demo-switch" onClick={() => setEnabled(!enabled)}><i /></button></div>
           </div>
         </aside>
-        {!open && <button className="p-demo-reopen" type="button" onClick={() => setOpen(true)} aria-label="Open Patches demo sidebar"><LogoMark className="h-6 w-6" /></button>}
+        {!open && <button className="p-demo-reopen" type="button" onClick={() => setOpen(true)} aria-label="Open Patchy demo sidebar"><LogoMark className="h-6 w-6" /></button>}
       </div>
     </div>
     <figcaption>Try it yourself · click a suggestion and watch this sample page change</figcaption>

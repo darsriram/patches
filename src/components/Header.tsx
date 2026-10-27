@@ -69,7 +69,7 @@ export function Header() {
       )}
     >
       <Container className="flex h-16 items-center justify-between gap-4 lg:h-[4.5rem]">
-        <Link href="/" className="relative z-10 rounded-lg" aria-label="Patches home">
+        <Link href="/" className="relative z-10 rounded-lg" aria-label="Patchy home">
           <Logo />
         </Link>
 

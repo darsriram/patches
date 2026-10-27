@@ -34,7 +34,7 @@ export function UseCaseVideos() {
   }, [active]);
 
   return <div className="use-case-videos" data-no-page-motion>
-    <div className="use-case-video-tabs" role="tablist" aria-label="Patches video examples">
+    <div className="use-case-video-tabs" role="tablist" aria-label="Patchy video examples">
       {demos.map((demo, index) => <button key={demo.id} ref={element => { tabs.current[index] = element; }} type="button" role="tab" id={`${id}-${demo.id}`} aria-selected={active === index} aria-controls={`${id}-panel`} tabIndex={active === index ? 0 : -1} onClick={() => setActive(index)} onKeyDown={event => {
         let next = index;
         if (event.key === "ArrowRight") next = (index + 1) % demos.length;
@@ -46,11 +46,11 @@ export function UseCaseVideos() {
       }}><span>0{index + 1}</span><strong>{demo.name}</strong><small>{demo.description}</small></button>)}
     </div>
     <div id={`${id}-panel`} role="tabpanel" aria-labelledby={`${id}-${current.id}`} className="use-case-video-panel">
-      <video key={current.id} ref={video} controls muted playsInline preload="metadata" poster={`/videos/patches-${current.id}-poster.png`} aria-label={`${current.name}: ${current.description}. Animated product concept showing the Patches sidebar opening, typing a request, and applying it.`}>
+      <video key={current.id} ref={video} controls muted playsInline preload="metadata" poster={`/videos/patches-${current.id}-poster.png`} aria-label={`${current.name}: ${current.description}. Animated product concept showing the Patchy sidebar opening, typing a request, and applying it.`}>
         <source src={`/videos/patches-${current.id}.mp4`} type="video/mp4" />
         Your browser does not support video. <a href={`/videos/patches-${current.id}.mp4`}>Download this demo</a>.
       </video>
     </div>
-    <p className="use-case-video-caption">Illustrative product concepts with sample content. These websites are not affiliated with Patches.</p>
+    <p className="use-case-video-caption">Illustrative product concepts with sample content. These websites are not affiliated with Patchy.</p>
   </div>;
 }

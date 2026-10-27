@@ -42,7 +42,7 @@ export function DemoVideo({ src, captionsSrc }: { src?: string; captionsSrc?: st
               onPointerEnter={event => {
                 if (event.pointerType !== "mouse" || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
                 void event.currentTarget.play().catch(() => { /* Native controls remain available if autoplay is blocked. */ });
-              }} onPlay={() => setStarted(true)} poster="/videos/patches-product-demo-full-frame-poster.jpg" aria-label="Patches Canvas and Gmail product demonstration">
+              }} onPlay={() => setStarted(true)} poster="/videos/patchy-product-demo-poster.jpg" aria-label="Patchy Canvas and Gmail product demonstration">
               <source src={src} type="video/mp4" />
               {captionsSrc && <track kind="captions" src={captionsSrc} srcLang="en" label="English" />}
               Your browser does not support embedded video.
@@ -52,7 +52,7 @@ export function DemoVideo({ src, captionsSrc }: { src?: string; captionsSrc?: st
               <div className="patches-video-window" aria-hidden="true"><span /><span /><span /><i /></div>
               <div className="patches-video-center">
                 <span className="patches-video-symbol" aria-hidden="true"><svg viewBox="0 0 24 24" width="25" height="25" fill="none" stroke="currentColor" strokeWidth="1.4"><rect x="3" y="5" width="13" height="14" rx="3" /><path d="m16 10 5-3v10l-5-3Z" /></svg></span>
-                <p>See Patches in action.</p>
+                <p>See Patchy in action.</p>
                 <span>Demo video coming soon</span>
               </div>
               <div className="patches-video-timeline" aria-hidden="true"><span /><i /><span /></div>

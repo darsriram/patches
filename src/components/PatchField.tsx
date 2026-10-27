@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 
-/** An original flowing ribbon field in the Patches peach and vermilion palette. */
+/** An original flowing ribbon field in the Patchy peach and vermilion palette. */
 export function PatchField() {
   const ref = useRef<HTMLCanvasElement>(null);
   useEffect(() => {

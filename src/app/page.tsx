@@ -18,7 +18,7 @@ export default function Home() {
           <p className="patches-eyebrow">Your web. Your way.</p>
           <h1 className="patches-headline">Make every website<br />work <em>your way.</em></h1>
           <p className="patches-description">
-            Tell Patches what to change. Make the page yours.
+            Tell Patchy what to change. Make the page yours.
           </p>
           <div className="patches-actions">
             <ButtonLink href="/beta">Apply for beta access <span aria-hidden="true">→</span></ButtonLink>
@@ -29,7 +29,7 @@ export default function Home() {
         </Container>
       </section>
 
-      <DemoVideo src="/videos/patches-product-demo-full-frame.mp4" captionsSrc="/videos/patches-product-demo-22s.vtt" />
+      <DemoVideo src="/videos/patchy-product-demo.mp4" captionsSrc="/videos/patchy-product-demo.vtt" />
 
       <section id="problem" className="patches-overview home-anchor" aria-labelledby="problem-heading">
         <Container>
@@ -37,7 +37,7 @@ export default function Home() {
           <ScrollReveal stagger className="patches-overview-intro overview-story">
             <h2 id="problem-heading" data-scroll-item>Websites are built for everyone. <em>Yours should work for you.</em></h2>
             <div data-scroll-item>
-              <p>The same layout. The same clutter. Millions of different people. Patches lets you reshape websites around what you need.</p>
+              <p>The same layout. The same clutter. Millions of different people. Patchy lets you reshape websites around what you need.</p>
               <div className="layout-comparison" role="img" aria-label="Before: article squeezed between menus and updates. After: a wide article with references grouped below and navigation in a compact top bar.">
                 <div className="layout-mini layout-mini-before" aria-hidden="true"><span className="layout-mini-label">BEFORE</span><div className="layout-mini-browser"><div className="layout-mini-top">Menu · News · Updates</div><div className="layout-mini-scattered"><aside>Links<i /><i /><i /></aside><article><b>Article</b><i /><i /><i /></article><aside>Updates<i /><i /></aside><section>References scattered below<i /></section></div></div></div>
                 <span className="layout-mini-arrow" aria-hidden="true">→</span>

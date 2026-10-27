@@ -12,7 +12,7 @@ export function BetaCTA({ title = <>Own your <em>internet.</em></>, typewriter =
       <Container>
         <ScrollReveal>
           {typewriter ? <><span className="closing-brand"><LogoMark className="h-12 w-12" /></span><h2>What would you<br /><em>patch first?</em></h2><TypewriterPrompt /></> : <><p className="patches-eyebrow">Make it yours</p><h2>{title}</h2></>}
-          <p className="shared-beta-copy" style={copyColor ? { color: copyColor } : undefined}>Apply to test Patches and share your feedback.</p>
+          <p className="shared-beta-copy" style={copyColor ? { color: copyColor } : undefined}>Apply to test Patchy and share your feedback.</p>
           <div className="shared-beta-actions">
             <ButtonLink href="/beta">Apply for beta access <span aria-hidden="true">→</span></ButtonLink>
           </div>

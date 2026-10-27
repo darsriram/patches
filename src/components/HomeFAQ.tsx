@@ -6,9 +6,9 @@ export function HomeFAQ() { return (
             <Accordion
               items={[
                 {
-                  title: "What is Patches?",
+                  title: "What is Patchy?",
                   content:
-                    "Patches is an early-stage browser extension that lets you describe interface changes in plain English, then applies those changes to a supported website.",
+                    "Patchy is an early-stage browser extension that lets you describe interface changes in plain English, then applies those changes to a supported website.",
                 },
                 {
                   title: "Who is the early beta for?",
@@ -37,6 +37,6 @@ export function HomeFAQ() { return (
                 },
               ]}
             />
-        <div className="technical-accordion"><Accordion items={[{ title: "The technical version", content: "Patches can change a supported page’s styling, layout, and underlying page content in your browser. That includes hiding sections, adjusting spacing, highlighting information, restructuring layouts, and adding or changing page elements and content. These changes apply to your browser’s version of the page; they don’t modify the website’s server or source files." }]} /></div>
+        <div className="technical-accordion"><Accordion items={[{ title: "The technical version", content: "Patchy can change a supported page’s styling, layout, and underlying page content in your browser. That includes hiding sections, adjusting spacing, highlighting information, restructuring layouts, and adding or changing page elements and content. These changes apply to your browser’s version of the page; they don’t modify the website’s server or source files." }]} /></div>
       </div></Container></section>
 ); }

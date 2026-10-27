@@ -109,7 +109,7 @@ export function StepVisual({ step }: { step: 1 | 2 | 3 }) {
   if (step === 2) {
     return (
       <div className="rounded-2xl border border-border bg-white p-4">
-        <p className="text-[11px] font-semibold text-ink">Patches</p>
+        <p className="text-[11px] font-semibold text-ink">Patchy</p>
         <p className="mt-2 rounded-xl bg-lavender px-3 py-2 text-sm">
           Hide distractions and make this page easier to read.
         </p>
