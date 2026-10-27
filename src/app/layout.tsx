@@ -22,6 +22,20 @@ const instrument = Instrument_Serif({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.trypatchy.me"),
+  openGraph: {
+    type: "website",
+    siteName: site.name,
+    title: `${site.name} — ${site.slogan}`,
+    description: site.description,
+    images: [{ url: "/patchy-share-orange.png", width: 1200, height: 630, alt: "Patchy orange logo" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${site.name} — ${site.slogan}`,
+    description: site.description,
+    images: ["/patchy-share-orange.png"],
+  },
   title: {
     default: `${site.name} — ${site.slogan}`,
     template: `%s · ${site.name}`,
